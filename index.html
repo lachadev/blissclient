@@ -5,14 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bliss Client</title>
 
-  <!-- JetBrains Mono: clean Minecraft-adjacent professional font -->
+  <!-- JetBrains Mono for all professional body text -->
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Minecraft Title Font (Only for logo) -->
   <style>
     @font-face {
-      font-family: 'MinecraftLogo';
-      src: url('https://fonts.cdnfonts.com/s/19076/MinecraftTen-VGORe.ttf') format('truetype');
+      font-family: 'Minecraft';
+      src: url('fonts/Minecraft.ttf') format('truetype');
     }
 
     * {
@@ -36,13 +35,13 @@
     }
 
     h1 {
-      font-family: 'MinecraftLogo', sans-serif;
-      font-size: 3.5rem;
+      font-family: 'Minecraft', sans-serif;
+      font-size: 4rem;
       margin-bottom: 0.5em;
       background: linear-gradient(90deg, #ff69b4, #f08080, #db7093);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 1px 1px 2px #222;
+      text-shadow: 1px 1px 2px #000;
     }
 
     p {
@@ -124,10 +123,7 @@
 <body>
   <div class="bg-blur"></div>
 
-  <!-- Only the logo uses Minecraft font -->
   <h1>Bliss Client</h1>
-
-  <!-- JetBrains Mono used from here on -->
   <p>Enjoy the bliss! A refined Meteor fork for utility lovers.</p>
 
   <div class="buttons">
