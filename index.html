@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bliss Client</title>
 
-  <!-- JetBrains Mono for clean UI -->
+  <!-- JetBrains Mono for professional body -->
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Minecraft font (used only for logo) -->
   <style>
     @font-face {
       font-family: 'Minecraft';
@@ -21,6 +20,11 @@
       box-sizing: border-box;
     }
 
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
     body {
       font-family: 'JetBrains Mono', monospace;
       background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
@@ -29,10 +33,9 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      overflow: hidden;
       text-align: center;
       padding: 2rem;
+      position: relative;
     }
 
     h1 {
@@ -42,7 +45,9 @@
       background: linear-gradient(90deg, #ff69b4, #f08080, #db7093);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 1px 1px 2px #000;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     }
 
     p {
@@ -85,18 +90,18 @@
       opacity: 0.6;
     }
 
-    /* Petal style */
     .petal {
-      position: absolute;
-      top: -40px;
+      position: fixed;
+      top: -10%;
       width: 24px;
       height: 24px;
       background-image: url('https://minecraft.wiki/images/Cherry_Petals_JE2_BE1.png');
       background-size: contain;
       background-repeat: no-repeat;
-      opacity: 0.85;
+      opacity: 0.9;
       animation: fall linear infinite;
       pointer-events: none;
+      z-index: 99;
     }
 
     @keyframes fall {
@@ -105,8 +110,8 @@
         opacity: 1;
       }
       100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0.2;
+        transform: translateY(120vh) rotate(360deg);
+        opacity: 0;
       }
     }
 
