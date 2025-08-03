@@ -5,152 +5,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bliss Client</title>
 
-  <!-- JetBrains Mono for professional body -->
+  <!-- Body font -->
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-
   <style>
     @font-face {
       font-family: 'Minecraft';
       src: url('fonts/Minecraft.ttf') format('truetype');
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
-      overflow: hidden;
-    }
-
+    * { margin:0; padding:0; box-sizing:border-box }
+    html, body { height:100%; overflow:hidden }
     body {
       font-family: 'JetBrains Mono', monospace;
       background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
-      color: #5c2c2c;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      position: relative;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      text-align:center; position:relative; padding:2rem; color:#5c2c2c;
     }
 
+    /* Logo */
     h1 {
-      font-family: 'Minecraft', sans-serif;
-      font-size: 4rem;
-      margin-bottom: 0.5em;
-      background: linear-gradient(90deg, #ff69b4, #f08080, #db7093);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      font-family:'Minecraft', sans-serif;
+      font-size:4rem; margin-bottom:.5em;
+      background:linear-gradient(90deg, #ff69b4, #f08080, #db7093);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      background-clip:text; color:transparent;
+      text-shadow:1px 1px 2px rgba(0,0,0,.3); z-index:10;
     }
 
     p {
-      font-size: 1.1rem;
-      margin-bottom: 2em;
-      color: #6b1e1e;
+      font-size:1.1rem; margin-bottom:2em; color:#6b1e1e; z-index:10;
     }
 
     .buttons {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
+      display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; z-index:10;
     }
-
     .btn {
-      padding: 0.75em 1.5em;
-      background-color: #ffb6c1;
-      border: 2px solid #a94444;
-      border-radius: 8px;
-      color: #5c2c2c;
-      font-weight: bold;
-      cursor: pointer;
-      font-family: 'JetBrains Mono', monospace;
-      text-decoration: none;
-      transition: transform 0.2s, background 0.3s;
+      padding:.75em 1.5em; background:#ffb6c1; border:2px solid #a94444;
+      border-radius:8px; color:#5c2c2c; font-weight:bold;
+      font-family:'JetBrains Mono'; text-decoration:none; cursor:pointer;
+      transition:transform .2s, background .3s;
     }
-
-    .btn:hover {
-      transform: scale(1.05);
-      background-color: #f18ba8;
-    }
+    .btn:hover { transform:scale(1.05); background:#f18ba8; }
 
     footer {
-      position: absolute;
-      bottom: 1rem;
-      font-size: 0.85rem;
-      font-family: 'JetBrains Mono', monospace;
-      color: #7d3a3a;
-      opacity: 0.6;
-    }
-
-    .petal {
-      position: fixed;
-      top: -10%;
-      width: 24px;
-      height: 24px;
-      background-image: url('https://minecraft.wiki/images/Cherry_Petals_JE2_BE1.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      opacity: 0.9;
-      animation: fall linear infinite;
-      pointer-events: none;
-      z-index: 99;
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(120vh) rotate(360deg);
-        opacity: 0;
-      }
+      position:absolute; bottom:1rem; width:100%; text-align:center;
+      font-size:.85rem; font-family:'JetBrains Mono'; opacity:.6; color:#7d3a3a; z-index:10;
     }
 
     .bg-blur {
-      position: absolute;
-      top: -20%;
-      left: -10%;
-      width: 150%;
-      height: 150%;
-      background: radial-gradient(circle at center, #ffc0cb 0%, transparent 60%);
-      filter: blur(120px);
-      z-index: -1;
-      opacity: 0.2;
+      position:absolute; top:-20%; left:-10%; width:150%; height:150%;
+      background:radial-gradient(circle at center, #ffc0cb 0%, transparent 60%);
+      filter:blur(120px); opacity:.2; z-index:-1;
+    }
+
+    .petal {
+      position:fixed; top:-80px; pointer-events:none; z-index:5;
+      width: 64px; height: 64px;
+      image-rendering: pixelated;
+      opacity: 0.85;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0%   { transform: translateY(0)   rotate(0deg);   opacity:1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity:0; }
     }
   </style>
 </head>
 <body>
   <div class="bg-blur"></div>
-
   <h1>Bliss Client</h1>
   <p>Enjoy the bliss! A refined Meteor fork for utility lovers.</p>
-
   <div class="buttons">
-    <a class="btn" href="https://github.com/YOUR_GITHUB/bliss-client" target="_blank">View on GitHub</a>
-    <a class="btn" href="https://YOUR_DOWNLOAD_LINK.com" target="_blank">Download</a>
+    <a class="btn" href="#">View on GitHub</a>
+    <a class="btn" href="#">Download</a>
   </div>
-
   <footer>© 2025 Bliss Client. Fork of Meteor Client.</footer>
 
   <script>
-    const petalCount = 40;
-    for (let i = 0; i < petalCount; i++) {
-      const petal = document.createElement('div');
-      petal.classList.add('petal');
-      petal.style.left = `${Math.random() * 100}vw`;
-      petal.style.animationDuration = `${5 + Math.random() * 5}s`;
-      petal.style.animationDelay = `${Math.random() * 5}s`;
-      petal.style.transform = `rotate(${Math.random() * 360}deg)`;
-      document.body.appendChild(petal);
+    const PETAL_SRC = 'images/cherry_1.png'; // local file
+    for (let i = 0; i < 40; i++) {
+      const img = document.createElement('img');
+      img.src = PETAL_SRC;
+      img.className = 'petal';
+      img.style.left = Math.random() * 100 + 'vw';
+      img.style.animationDuration = (5 + Math.random() * 5) + 's';
+      img.style.animationDelay = Math.random() * 5 + 's';
+      img.style.transform = `rotate(${Math.random() * 360}deg)`;
+      document.body.appendChild(img);
     }
   </script>
 </body>
