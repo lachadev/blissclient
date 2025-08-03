@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bliss Client</title>
 
-  <!-- JetBrains Mono for all professional body text -->
+  <!-- JetBrains Mono for clean UI -->
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
+  <!-- Minecraft font (used only for logo) -->
   <style>
     @font-face {
       font-family: 'Minecraft';
@@ -84,14 +85,16 @@
       opacity: 0.6;
     }
 
+    /* Petal style */
     .petal {
       position: absolute;
-      top: -50px;
-      width: 20px;
-      height: 20px;
+      top: -40px;
+      width: 24px;
+      height: 24px;
       background-image: url('https://minecraft.wiki/images/Cherry_Petals_JE2_BE1.png');
-      background-size: cover;
-      opacity: 0.9;
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.85;
       animation: fall linear infinite;
       pointer-events: none;
     }
@@ -103,7 +106,7 @@
       }
       100% {
         transform: translateY(100vh) rotate(360deg);
-        opacity: 0.1;
+        opacity: 0.2;
       }
     }
 
@@ -136,11 +139,12 @@
   <script>
     const petalCount = 40;
     for (let i = 0; i < petalCount; i++) {
-      const petal = document.createElement("div");
-      petal.classList.add("petal");
+      const petal = document.createElement('div');
+      petal.classList.add('petal');
       petal.style.left = `${Math.random() * 100}vw`;
       petal.style.animationDuration = `${5 + Math.random() * 5}s`;
       petal.style.animationDelay = `${Math.random() * 5}s`;
+      petal.style.transform = `rotate(${Math.random() * 360}deg)`;
       document.body.appendChild(petal);
     }
   </script>
