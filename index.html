@@ -4,94 +4,206 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bliss Client</title>
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
 
-  <!-- Body font -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
     @font-face {
       font-family: 'Minecraft';
       src: url('fonts/Minecraft.ttf') format('truetype');
     }
-    * { margin:0; padding:0; box-sizing:border-box }
-    html, body { height:100%; overflow:hidden }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
     body {
       font-family: 'JetBrains Mono', monospace;
-      background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      text-align:center; position:relative; padding:2rem; color:#5c2c2c;
-    }
-
-    /* Logo */
-    h1 {
-      font-family:'Minecraft', sans-serif;
-      font-size:4rem; margin-bottom:.5em;
-      background:linear-gradient(90deg, #ff69b4, #f08080, #db7093);
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-      background-clip:text; color:transparent;
-      text-shadow:1px 1px 2px rgba(0,0,0,.3); z-index:10;
-    }
-
-    p {
-      font-size:1.1rem; margin-bottom:2em; color:#6b1e1e; z-index:10;
-    }
-
-    .buttons {
-      display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; z-index:10;
-    }
-    .btn {
-      padding:.75em 1.5em; background:#ffb6c1; border:2px solid #a94444;
-      border-radius:8px; color:#5c2c2c; font-weight:bold;
-      font-family:'JetBrains Mono'; text-decoration:none; cursor:pointer;
-      transition:transform .2s, background .3s;
-    }
-    .btn:hover { transform:scale(1.05); background:#f18ba8; }
-
-    footer {
-      position:absolute; bottom:1rem; width:100%; text-align:center;
-      font-size:.85rem; font-family:'JetBrains Mono'; opacity:.6; color:#7d3a3a; z-index:10;
+      background: url('images/background.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 2rem;
+      text-align: center;
     }
 
     .bg-blur {
-      position:absolute; top:-20%; left:-10%; width:150%; height:150%;
-      background:radial-gradient(circle at center, #ffc0cb 0%, transparent 60%);
-      filter:blur(120px); opacity:.2; z-index:-1;
+      position: absolute;
+      top: -10%;
+      left: -10%;
+      width: 150%;
+      height: 150%;
+      background: radial-gradient(circle, rgba(255,192,203,0.15) 0%, transparent 60%);
+      filter: blur(100px);
+      z-index: 0;
+    }
+
+    h1 {
+      font-family: 'Minecraft', sans-serif;
+      font-size: 4rem;
+      letter-spacing: 4px;
+      background: linear-gradient(270deg, #ff69b4, #f08080, #db7093, #ff69b4);
+      background-size: 800% 800%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 8s ease infinite;
+      z-index: 2;
+    }
+
+    @keyframes glow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    p {
+      color: #ffffff;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      animation: fadeUp 1.2s ease-out forwards;
+      z-index: 2;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      z-index: 2;
+      animation: fadeUp 1.6s ease-out forwards;
+    }
+
+    .btn {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 2px solid #ffffff22;
+      border-radius: 12px;
+      padding: 0.8em 1.6em;
+      color: #fff;
+      font-weight: bold;
+      font-family: 'JetBrains Mono', monospace;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 1rem;
+      width: 100%;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #fff;
+      opacity: 0.6;
+      z-index: 2;
     }
 
     .petal {
-      position:fixed; top:-80px; pointer-events:none; z-index:5;
-      width: 64px; height: 64px;
+      position: fixed;
+      width: 24px;
+      height: 24px;
       image-rendering: pixelated;
-      opacity: 0.85;
-      animation: fall linear infinite;
+      opacity: 0.9;
+      z-index: 1;
+      animation: blow linear infinite;
+      --driftX: 0vw;
     }
-    @keyframes fall {
-      0%   { transform: translateY(0)   rotate(0deg);   opacity:1; }
-      100% { transform: translateY(110vh) rotate(360deg); opacity:0; }
+
+    @keyframes blow {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--driftX), 120vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
   <div class="bg-blur"></div>
+
   <h1>Bliss Client</h1>
   <p>Enjoy the bliss! A refined Meteor fork for utility lovers.</p>
+
   <div class="buttons">
-    <a class="btn" href="#">View on GitHub</a>
-    <a class="btn" href="#">Download</a>
+    <a class="btn" href="https://github.com/YOUR_GITHUB/bliss-client" target="_blank">View on GitHub</a>
+    <a class="btn" href="https://YOUR_DOWNLOAD_LINK.com" target="_blank">Download</a>
   </div>
+
   <footer>© 2025 Bliss Client. Fork of Meteor Client.</footer>
 
   <script>
-    const PETAL_SRC = 'images/cherry_1.png'; // local file
-    for (let i = 0; i < 40; i++) {
+    // Petal animation
+    const PETAL_SRC = 'images/cherry_1.png';
+    const petalCount = 20;
+
+    for (let i = 0; i < petalCount; i++) {
       const img = document.createElement('img');
       img.src = PETAL_SRC;
       img.className = 'petal';
-      img.style.left = Math.random() * 100 + 'vw';
-      img.style.animationDuration = (5 + Math.random() * 5) + 's';
-      img.style.animationDelay = Math.random() * 5 + 's';
-      img.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+      if (Math.random() < 0.3) {
+        img.style.top = `${20 + Math.random() * 40}vh`;
+      } else {
+        img.style.top = '-50px';
+      }
+
+      img.style.left = `${Math.pow(Math.random(), 2) * 100}vw`;
+      img.style.setProperty('--driftX', `${20 + Math.random() * 60}vw`);
+      const duration = 4 + Math.random() * 5;
+      img.style.animationDuration = `${duration}s`;
+      img.style.animationDelay = `-${Math.random() * duration}s`;
+      img.style.transform = `rotate(${Math.random() * 360}deg) scale(${0.8 + Math.random() * 1.2})`;
+
       document.body.appendChild(img);
     }
+
+    // Scrolling tab name (background-friendly)
+    (function() {
+      let txt = "    Bliss Client    ";
+      const speed = 150;
+
+      const blob = new Blob([`
+        let txt = ${JSON.stringify(txt)};
+        setInterval(() => {
+          postMessage(txt);
+          txt = txt.substring(1) + txt[0];
+        }, ${speed});
+      `], { type: 'application/javascript' });
+
+      const worker = new Worker(URL.createObjectURL(blob));
+      worker.onmessage = e => document.title = e.data;
+    })();
   </script>
 </body>
 </html>
