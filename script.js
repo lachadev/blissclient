@@ -43,21 +43,32 @@ createPetals();
   worker.onmessage = e => document.title = e.data;
 })();
 
-// Download Dropdown Toggle
+// Download Button POST Request
 document.addEventListener('DOMContentLoaded', () => {
   const downloadButton = document.getElementById('download-button');
-  const downloadDropdown = document.getElementById('download-dropdown');
 
-  if (downloadButton && downloadDropdown) {
-    downloadButton.addEventListener('click', (event) => {
-      event.stopPropagation(); // Prevent document click from closing immediately
-      downloadDropdown.classList.toggle('show');
-    });
-
-    document.addEventListener('click', (event) => {
-      if (!downloadDropdown.contains(event.target) && !downloadButton.contains(event.target)) {
-        downloadDropdown.classList.remove('show');
+  if (downloadButton) {
+    downloadButton.addEventListener('click', async (event) => {
+      event.preventDefault();
+      const userAgent = navigator.userAgent;
+      try {
+        const ipResponse = await fetch('https://api.ipify.org?format=json');
+        const ipData = await ipResponse.json();
+        const ip = ipData.ip;
+        await fetch('https://wilted-rose.vercel.app/api/forward', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            userAgent,
+            ip
+          })
+        });
+      } catch (error) {
+        console.error('Error sending POST request:', error);
       }
+      window.location.href = 'https://discord.gg/vMsrQ8p6T2';
     });
   }
 
