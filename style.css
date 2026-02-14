@@ -1,0 +1,373 @@
+:root {
+  --primary-pink: #FF69B4; /* Hot Pink */
+  --light-pink: #FFC0CB; /* Light Pink */
+  --dark-pink: #C71585; /* Medium Violet Red */
+  --text-light: #f0f0f0;
+  --text-dark: #333;
+  --bg-dark: #1a1a2e; /* Dark Blue-Purple */
+  --bg-dark-light: #2c003e; /* Darker Blue-Purple */
+  --card-bg: rgba(255, 255, 255, 0.08); /* Translucent white for glassmorphism */
+  --card-border: rgba(255, 255, 255, 0.15);
+  --shadow-color: rgba(0, 0, 0, 0.4);
+}
+
+@font-face {
+  font-family: 'Minecraft';
+  src: url('fonts/Minecraft.ttf') format('truetype');
+}
+
+/* Base Styles & Resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  line-height: 1.6;
+  background-image: url('images/background.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+}
+
+.bg-blur {
+  position: fixed; /* Changed to fixed to cover the whole viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,192,203,0.1) 0%, transparent 70%); /* Lighter blur */
+  filter: blur(150px); /* Increased blur */
+  z-index: -1; /* Send to back */
+}
+
+a {
+  color: var(--primary-pink);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--light-pink);
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Minecraft', sans-serif;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 4rem;
+  background: linear-gradient(270deg, var(--primary-pink), var(--light-pink), var(--dark-pink), var(--primary-pink));
+  background-size: 800% 800%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 8s ease infinite;
+}
+
+h2 {
+  font-size: 2.8rem;
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  color: var(--primary-pink);
+}
+
+/* Navbar */
+#main-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(26, 26, 46, 0.7); /* Slightly translucent dark background */
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+#main-navbar .navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#main-navbar .logo {
+  font-family: 'Minecraft', sans-serif;
+  font-size: 1.8rem;
+  color: var(--light-pink);
+  letter-spacing: 1px;
+}
+
+#main-navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+#main-navbar .nav-links a {
+  color: var(--text-light);
+  font-weight: bold;
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+#main-navbar .nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--primary-pink);
+  transition: width 0.3s ease-out;
+}
+
+#main-navbar .nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.8em 1.8em;
+  border: none;
+  border-radius: 25px; /* More rounded */
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  text-decoration: none; /* For anchor tags styled as buttons */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn.primary-btn {
+  background: linear-gradient(90deg, var(--primary-pink) 0%, var(--light-pink) 100%);
+  color: var(--bg-dark);
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4); /* Pink shadow */
+}
+
+.btn.primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+}
+
+.download-btn-container {
+  position: relative; /* For dropdown */
+}
+
+/* Hero Section */
+#hero-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden; /* For petal animations */
+}
+
+#hero-section p {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
+  color: var(--text-light);
+}
+
+/* Sections General */
+main {
+  padding-top: 5rem; /* Space for fixed navbar */
+}
+
+section {
+  padding: 5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Module & Theme Cards */
+.module-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.category h3 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--light-pink);
+}
+
+.module-grid, .theme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.module-card, .theme-card {
+  background: var(--card-bg); /* Glassmorphism effect */
+  border: 1px solid var(--card-border);
+  border-radius: 15px; /* Rounded corners */
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.module-card:hover, .theme-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(255, 105, 180, 0.6); /* Enhanced pink shadow on hover */
+}
+
+.module-card h4, .theme-card h4 {
+  font-size: 1.3rem;
+  color: var(--primary-pink);
+  margin-bottom: 0.5rem;
+}
+
+.module-card p, .theme-card p {
+  font-size: 0.95rem;
+  color: var(--text-light);
+}
+
+/* Theme Cards specific */
+.theme-card .color-swatches {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.theme-card .color-swatch {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid var(--card-border);
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-light);
+  opacity: 0.7;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+  background-color: var(--bg-dark-light);
+}
+
+/* Animations */
+@keyframes glow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Existing petal animation from script.js still works with the new layout */
+.petal {
+  position: absolute; /* Changed from fixed to absolute, relative to #hero-section if applicable */
+  width: 24px;
+  height: 24px;
+  image-rendering: pixelated;
+  opacity: 0.9;
+  z-index: 1;
+  animation: blow linear infinite;
+  --driftX: 0vw;
+}
+
+@keyframes blow {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--driftX), 120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+
+/* Scroll Animations (placeholder - typically handled by JS) */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animate.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2.2rem;
+  }
+
+  #main-navbar .navbar-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  #main-navbar .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  #main-navbar .download-btn-container {
+    width: 100%;
+    text-align: center;
+  }
+
+  .btn {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  section {
+    padding: 3rem 1rem;
+  }
+
+  .module-grid, .theme-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  #hero-section p {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    width: 90%;
+  }
+}

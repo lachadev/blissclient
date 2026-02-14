@@ -8,204 +8,392 @@
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    @font-face {
-      font-family: 'Minecraft';
-      src: url('fonts/Minecraft.ttf') format('truetype');
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
-      overflow: hidden;
-    }
-
-    body {
-      font-family: 'JetBrains Mono', monospace;
-      background: url('images/background.png') no-repeat center center fixed;
-      background-size: cover;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    .bg-blur {
-      position: absolute;
-      top: -10%;
-      left: -10%;
-      width: 150%;
-      height: 150%;
-      background: radial-gradient(circle, rgba(255,192,203,0.15) 0%, transparent 60%);
-      filter: blur(100px);
-      z-index: 0;
-    }
-
-    h1 {
-      font-family: 'Minecraft', sans-serif;
-      font-size: 4rem;
-      letter-spacing: 4px;
-      background: linear-gradient(270deg, #ff69b4, #f08080, #db7093, #ff69b4);
-      background-size: 800% 800%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: glow 8s ease infinite;
-      z-index: 2;
-    }
-
-    @keyframes glow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    p {
-      color: #ffffff;
-      font-size: 1.2rem;
-      margin-top: 1rem;
-      margin-bottom: 2rem;
-      animation: fadeUp 1.2s ease-out forwards;
-      z-index: 2;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      z-index: 2;
-      animation: fadeUp 1.6s ease-out forwards;
-    }
-
-    .btn {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      border: 2px solid #ffffff22;
-      border-radius: 12px;
-      padding: 0.8em 1.6em;
-      color: #fff;
-      font-weight: bold;
-      font-family: 'JetBrains Mono', monospace;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .btn:hover {
-      transform: scale(1.05);
-      background: rgba(255, 255, 255, 0.25);
-    }
-
-    footer {
-      position: absolute;
-      bottom: 1rem;
-      width: 100%;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #fff;
-      opacity: 0.6;
-      z-index: 2;
-    }
-
-    .petal {
-      position: fixed;
-      width: 24px;
-      height: 24px;
-      image-rendering: pixelated;
-      opacity: 0.9;
-      z-index: 1;
-      animation: blow linear infinite;
-      --driftX: 0vw;
-    }
-
-    @keyframes blow {
-      0% {
-        transform: translate(0, 0) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translate(var(--driftX), 120vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="bg-blur"></div>
 
-  <h1>Bliss Client</h1>
-  <p>Enjoy the bliss! A refined Meteor fork for utility lovers.</p>
+  <nav id="main-navbar">
+    <div class="navbar-content">
+      <div class="logo">BlissClient</div>
+      <ul class="nav-links">
+        <li><a href="#hero-section">Home</a></li>
+        <li><a href="#modules-section">Modules</a></li>
+        <li><a href="#themes-section">Themes</a></li>
+      </ul>
+      <div class="download-btn-container">
+        <button class="btn primary-btn" id="download-button">Download BlissClient</button>
+        <!-- Dropdown/Modal for versions will be added here later -->
+      </div>
+    </div>
+  </nav>
 
-  <div class="buttons">
-    <a class="btn" href="https://discord.gg/XhRM8xhXkK" target="_blank">Download v1.21.10</a>
-    <a class="btn" href="https://discord.gg/XhRM8xhXkK" target="_blank">Download v1.21.11 LATEST</a>
-    <a class="btn" href="https://github.com/lachameleon/blissclient" target="_blank">Source (Github)</a>
-    <a class="btn" href="https://modrinth.com/mod/blissmod" target="_blank">Modrinth (Coming soon)</a>
-  </div>
+  <main>
+    <section id="hero-section" class="scroll-animate">
+      <h1>BlissClient</h1>
+      <p>Modern QoL & Automation for Minecraft</p>
+      <div class="download-button-container">
+        <button class="btn primary-btn" id="download-button">Download BlissClient</button>
+        <div class="download-dropdown" id="download-dropdown">
+          <a href="#" class="dropdown-item">Latest Version (v1.21.1)</a>
+          <a href="#" class="dropdown-item">Alternative Build (v1.20.4)</a>
+          <a href="#" class="dropdown-item">Snapshot Build</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="modules-section" class="scroll-animate">
+      <h2>Modules</h2>
+      <div class="module-categories">
+        <div class="category">
+          <h3>Player Automation / QoL</h3>
+          <div class="module-grid">
+                  <div class="module-card">
+              <h4>AntiAFK</h4>
+              <p>Prevents AFK detection.</p>
+            </div>
+            <div class="module-card">
+              <h4>AutoEat</h4>
+              <p>Automatically eats food.</p>
+            </div>
+            <div class="module-card">
+              <h4>AutoFish</h4>
+              <p>Automatically fishes for you.</p>
+            </div>
+            <div class="module-card">
+              <h4>AutoGap</h4>
+              <p>Automatically eats golden apples.</p>
+            </div>
+            <div class="module-card">
+              <h4>AutoMend</h4>
+              <p>Automatically mends your armor/tools.</p>
+            </div>
+            <div class="module-card">
+              <h4>AutoReplenish</h4>
+              <p>Automatically replenishes items.</p>
+            </div>
+            <div class="module-card">
+              <h4>AutoRespawn</h4>
+              <p>Automatically respawns after death.</p>
+            </div>
+            <div class="module-card">
+              <h4>AutoTool</h4>
+              <p>Automatically selects the best tool.</p>
+            </div>
+            <div class="module-card">
+              <h4>BreakDelay</h4>
+              <p>Adds a delay to block breaking.</p>
+            </div>
+            <div class="module-card">
+              <h4>ChestSwap</h4>
+              <p>Swaps chests automatically.</p>
+            </div>
+            <div class="module-card">
+              <h4>EXPThrower</h4>
+              <p>Throws experience bottles.</p>
+            </div>
+            <div class="module-card">
+              <h4>LiquidInteract</h4>
+              <p>Allows interaction with liquids.</p>
+            </div>
+            <div class="module-card">
+              <h4>MiddleClickExtra</h4>
+              <p>Extra functions for middle click.</p>
+            </div>
+            <div class="module-card">
+              <h4>NameProtect</h4>
+              <p>Protects your name from exposure.</p>
+            </div>
+            <div class="module-card">
+              <h4>Portals</h4>
+              <p>Better portal interactions.</p>
+            </div>
+          </div>
+        </div>
+        <div class="category">
+          <h3>Render (Cosmetic / Info-Lite)</h3>
+          <div class="module-grid">
+                  <div class="module-card">
+              <h4>BetterTooltips</h4>
+              <p>Enhanced tooltips for items.</p>
+            </div>
+            <div class="module-card">
+              <h4>BossStack</h4>
+              <p>Stacks boss bars for clarity.</p>
+            </div>
+            <div class="module-card">
+              <h4>CameraTweaks</h4>
+              <p>Customizable camera settings.</p>
+            </div>
+            <div class="module-card">
+              <h4>Fullbright</h4>
+              <p>Maximizes screen brightness.</p>
+            </div>
+            <div class="module-card">
+              <h4>Grid</h4>
+              <p>Displays a helpful grid overlay.</p>
+            </div>
+            <div class="module-card">
+              <h4>HandView</h4>
+              <p>Adjusts hand render position.</p>
+            </div>
+            <div class="module-card">
+              <h4>ItemPhysics</h4>
+              <p>Realistic item physics.</p>
+            </div>
+            <div class="module-card">
+              <h4>ItemHighlight</h4>
+              <p>Highlights specific items.</p>
+            </div>
+            <div class="module-card">
+              <h4>LightOverlay</h4>
+              <p>Shows light levels on blocks.</p>
+            </div>
+            <div class="module-card">
+              <h4>Nametags</h4>
+              <p>Customizable nametag rendering.</p>
+            </div>
+            <div class="module-card">
+              <h4>TimeChanger</h4>
+              <p>Changes in-game time visually.</p>
+            </div>
+            <div class="module-card">
+              <h4>Zoom</h4>
+              <p>Basic zoom functionality.</p>
+            </div>
+            <div class="module-card">
+              <h4>ZoomPlus</h4>
+              <p>Advanced zoom options.</p>
+            </div>
+          </div>
+        </div>
+        <div class="category">
+          <h3>World Automation</h3>
+          <div class="module-grid">
+                  <div class="module-card">
+              <h4>AutoBreed</h4>
+              <p>Automates animal breeding.</p>
+            </div>
+            <div class="module-card">
+              <h4>AutoBrewer</h4>
+              <p>Automates potion brewing.</p>
+            </div>
+            <div class="module-card">
+              <h4>AutoMount</h4>
+              <p>Automatically mounts entities.</p>
+            </div>
+            <div class="module-card">
+              <h4>AutoNametag</h4>
+              <p>Automates nametag usage.</p>
+            </div>
+            <div class="module-card">
+              <h4>AutoShearer</h4>
+              <p>Automates sheep shearing.</p>
+            </div>
+            <div class="module-card">
+              <h4>AutoSign</h4>
+              <p>Automates sign placement/editing.</p>
+            </div>
+            <div class="module-card">
+              <h4>AutoSmelter</h4>
+              <p>Automates item smelting.</p>
+            </div>
+            <div class="module-card">
+              <h4>DoubleDoorsInteract</h4>
+              <p>Interacts with double doors.</p>
+            </div>
+            <div class="module-card">
+              <h4>HighwayBuilder</h4>
+              <p>Assists in building highways.</p>
+            </div>
+            <div class="module-card">
+              <h4>LiquidFiller</h4>
+              <p>Automates filling with liquids.</p>
+            </div>
+            <div class="module-card">
+              <h4>NoGhostBlocks</h4>
+              <p>Prevents ghost blocks.</p>
+            </div>
+            <div class="module-card">
+              <h4>SpawnProofer</h4>
+              <p>Helps prevent mob spawns.</p>
+            </div>
+          </div>
+        </div>
+        <div class="category">
+          <h3>Movement Exceptions</h3>
+          <div class="module-grid">
+                  <div class="module-card">
+              <h4>AutoWalk</h4>
+              <p>Automates continuous walking.</p>
+            </div>
+            <div class="module-card">
+              <h4>Sprint</h4>
+              <p>Automates continuous sprinting.</p>
+            </div>
+            <div class="module-card">
+              <h4>AutoWasp</h4>
+              <p>Automates WASP movement.</p>
+            </div>
+          </div>
+        </div>
+        <div class="category">
+          <h3>Misc Utilities</h3>
+          <div class="module-grid">
+                  <div class="module-card">
+              <h4>AutoReconnect</h4>
+              <p>Automatically reconnects to servers.</p>
+            </div>
+            <div class="module-card">
+              <h4>AutoSleep</h4>
+              <p>Automates sleeping in beds.</p>
+            </div>
+            <div class="module-card">
+              <h4>BetterChat</h4>
+              <p>Enhances in-game chat features.</p>
+            </div>
+            <div class="module-card">
+              <h4>DiscordPresence</h4>
+              <p>Shows game activity on Discord.</p>
+            </div>
+            <div class="module-card">
+              <h4>InventoryTweaks</h4>
+              <p>Improves inventory management.</p>
+            </div>
+            <div class="module-card">
+              <h4>Notebot</h4>
+              <p>Plays note block songs.</p>
+            </div>
+            <div class="module-card">
+              <h4>Notifier</h4>
+              <p>Provides in-game notifications.</p>
+            </div>
+            <div class="module-card">
+              <h4>SoundBlocker</h4>
+              <p>Blocks unwanted sounds.</p>
+            </div>
+          </div>
+        </div>
+        <div class="category">
+          <h3>Stardust Modules</h3>
+          <div class="module-grid">
+                  <div class="module-card">
+              <h4>AdBlocker</h4>
+              <p>Blocks in-game advertisements.</p>
+            </div>
+            <div class="module-card">
+              <h4>AutoDoors</h4>
+              <p>Automatically opens and closes doors.</p>
+            </div>
+            <div class="module-card">
+              <h4>BannerData</h4>
+              <p>Displays banner information.</p>
+            </div>
+            <div class="module-card">
+              <h4>Loadouts</h4>
+              <p>Manages equipment loadouts.</p>
+            </div>
+            <div class="module-card">
+              <h4>LoreLocator</h4>
+              <p>Locates lore items.</p>
+            </div>
+            <div class="module-card">
+              <h4>Minesweeper</h4>
+              <p>In-game Minesweeper clone.</p>
+            </div>
+            <div class="module-card">
+              <h4>MusicTweaks</h4>
+              <p>Customizes in-game music.</p>
+            </div>
+            <div class="module-card">
+              <h4>RoadTrip</h4>
+              <p>Navigational assistance for long journeys.</p>
+            </div>
+            <div class="module-card">
+              <h4>SignatureSign</h4>
+              <p>Adds signatures to signs.</p>
+            </div>
+            <div class="module-card">
+              <h4>StashBrander</h4>
+              <p>Helps organize stashes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="themes-section" class="scroll-animate">
+      <h2>Themes</h2>
+      <div class="theme-grid">
+        <div class="theme-card">
+          <h4>DarkTheme</h4>
+          <p>A classic dark theme.</p>
+          <div class="color-swatches">
+            <div class="color-swatch" style="background-color: #1a1a1a;" title="Primary: #1a1a1a"></div>
+            <div class="color-swatch" style="background-color: #333333;" title="Secondary: #333333"></div>
+            <div class="color-swatch" style="background-color: #ff69b4;" title="Accent: #ff69b4"></div>
+          </div>
+        </div>
+        <div class="theme-card">
+          <h4>LambdaTheme</h4>
+          <p>Inspired by Lambda Client.</p>
+          <div class="color-swatches">
+            <div class="color-swatch" style="background-color: #313131;" title="Primary: #313131"></div>
+            <div class="color-swatch" style="background-color: #4a4a4a;" title="Secondary: #4a4a4a"></div>
+            <div class="color-swatch" style="background-color: #00ff00;" title="Accent: #00ff00"></div>
+          </div>
+        </div>
+        <div class="theme-card">
+          <h4>MidnightTheme</h4>
+          <p>Deep blues and purples.</p>
+          <div class="color-swatches">
+            <div class="color-swatch" style="background-color: #191970;" title="Primary: #191970"></div>
+            <div class="color-swatch" style="background-color: #483d8b;" title="Secondary: #483d8b"></div>
+            <div class="color-swatch" style="background-color: #8a2be2;" title="Accent: #8a2be2"></div>
+          </div>
+        </div>
+        <div class="theme-card">
+          <h4>MonochromeTheme</h4>
+          <p>Black, white, and grays.</p>
+          <div class="color-swatches">
+            <div class="color-swatch" style="background-color: #000000;" title="Primary: #000000"></div>
+            <div class="color-swatch" style="background-color: #cccccc;" title="Secondary: #cccccc"></div>
+            <div class="color-swatch" style="background-color: #808080;" title="Accent: #808080"></div>
+          </div>
+        </div>
+        <div class="theme-card">
+          <h4>PhosphorTheme</h4>
+          <p>Glowing green and dark tones.</p>
+          <div class="color-swatches">
+            <div class="color-swatch" style="background-color: #222222;" title="Primary: #222222"></div>
+            <div class="color-swatch" style="background-color: #444444;" title="Secondary: #444444"></div>
+            <div class="color-swatch" style="background-color: #00ff00;" title="Accent: #00ff00"></div>
+          </div>
+        </div>
+        <div class="theme-card">
+          <h4>SnowyTheme</h4>
+          <p>Light and cool colors.</p>
+          <div class="color-swatches">
+            <div class="color-swatch" style="background-color: #f0f8ff;" title="Primary: #f0f8ff"></div>
+            <div class="color-swatch" style="background-color: #e0ffff;" title="Secondary: #e0ffff"></div>
+            <div class="color-swatch" style="background-color: #add8e6;" title="Accent: #add8e6"></div>
+          </div>
+        </div>
+        <div class="theme-card">
+          <h4>StardustTheme</h4>
+          <p>Celestial and sparkling.</p>
+          <div class="color-swatches">
+            <div class="color-swatch" style="background-color: #2c003e;" title="Primary: #2c003e"></div>
+            <div class="color-swatch" style="background-color: #6a057f;" title="Secondary: #6a057f"></div>
+            <div class="color-swatch" style="background-color: #ffc0cb;" title="Accent: #ffc0cb"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>Bliss Client is a fork of Meteor Client, licensed under GNU General Public License (v3)</footer>
 
-  <script>
-    // Petal animation
-    const PETAL_SRC = 'images/cherry_1.png';
-    const petalCount = 20;
-
-    for (let i = 0; i < petalCount; i++) {
-      const img = document.createElement('img');
-      img.src = PETAL_SRC;
-      img.className = 'petal';
-
-      if (Math.random() < 0.3) {
-        img.style.top = `${20 + Math.random() * 40}vh`;
-      } else {
-        img.style.top = '-50px';
-      }
-
-      img.style.left = `${Math.pow(Math.random(), 2) * 100}vw`;
-      img.style.setProperty('--driftX', `${20 + Math.random() * 60}vw`);
-      const duration = 4 + Math.random() * 5;
-      img.style.animationDuration = `${duration}s`;
-      img.style.animationDelay = `-${Math.random() * duration}s`;
-      img.style.transform = `rotate(${Math.random() * 360}deg) scale(${0.8 + Math.random() * 1.2})`;
-
-      document.body.appendChild(img);
-    }
-
-    // Scrolling tab name (background-friendly)
-    (function() {
-      let txt = "    Bliss Client    ";
-      const speed = 150;
-
-      const blob = new Blob([`
-        let txt = ${JSON.stringify(txt)};
-        setInterval(() => {
-          postMessage(txt);
-          txt = txt.substring(1) + txt[0];
-        }, ${speed});
-      `], { type: 'application/javascript' });
-
-      const worker = new Worker(URL.createObjectURL(blob));
-      worker.onmessage = e => document.title = e.data;
-    })();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
